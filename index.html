@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Saldo</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <a class="marca" href="#inicio">
+        <span class="marca-icone">↗</span>
+        <span>Planilha de <span class="marca-destaque">gastos</span></span>
+      </a>
+
+      <nav class="navegacao">
+        <a class="link-navegacao ativo" href="#resumo">Visão geral</a>
+        <a class="link-navegacao" href="#transacoes">Transações</a>
+      </nav>
+    </header>
+
+    <main class="pagina" id="inicio">
+      <section class="boas-vindas">
+        <div>
+          <p class="rotulo-secao">PAINEL FINANCEIRO</p>
+          <h1>Controle seu financeiro</h1>
+        </div>
+
+        <label class="seletor-mes">
+          <span>Mês</span>
+          <input id="mes" name="mes" type="month" />
+        </label>
+      </section>
+
+      <section class="grade-resumo" id="resumo">
+        <article class="cartao-resumo cartao-principal">
+          <div class="topo-cartao">
+            <span class="rotulo-cartao">Gastos neste mês</span>
+            <span class="icone-cartao">↘</span>
+          </div>
+          <p class="valor" id="total-gastos">R$ 0,00</p>
+          <p class="observacao-cartao">Suas despesas registradas</p>
+        </article>
+
+        <article class="cartao-resumo">
+          <div class="topo-cartao">
+            <span class="rotulo-cartao">Orçamento mensal</span>
+            <span class="icone-cartao icone-suave">◷</span>
+          </div>
+          <p class="valor" id="orcamento-mensal">R$ 0,00</p>
+          <button class="botao-texto" id="botao-orcamento" type="button">
+            Definir orçamento
+          </button>
+        </article>
+
+        <article class="cartao-resumo">
+          <div class="topo-cartao">
+            <span class="rotulo-cartao">Saldo disponível</span>
+            <span class="icone-cartao icone-suave">✳</span>
+          </div>
+          <p class="valor positivo" id="saldo-disponivel">R$ 0,00</p>
+          <p class="observacao-cartao">Orçamento menos gastos</p>
+        </article>
+      </section>
+
+      <section class="painel painel-adicionar" id="adicionar-gasto">
+        <div class="cabecalho-secao">
+          <div>
+            <p class="rotulo-secao">NOVO REGISTRO</p>
+            <h2>Adicionar gasto</h2>
+          </div>
+          <span class="icone-cabecalho">＋</span>
+        </div>
+
+        <form id="formulario-gasto">
+          <div class="grade-formulario">
+            <div class="campo campo-descricao">
+              <label for="descricao">Descrição</label>
+              <input
+                id="descricao"
+                name="descricao"
+                type="text"
+                placeholder="Ex.: Compras no mercado"
+                required
+              />
+            </div>
+
+            <div class="campo">
+              <label for="valor">Valor</label>
+              <div class="prefixo-valor">
+                <span>R$</span>
+                <input
+                  id="valor"
+                  name="valor"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  placeholder="0,00"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="categoria">Categoria</label>
+              <select id="categoria" name="categoria" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="alimentacao">Alimentação</option>
+                <option value="moradia">Moradia</option>
+                <option value="transporte">Transporte</option>
+                <option value="lazer">Lazer</option>
+                <option value="saude">Saúde</option>
+                <option value="educacao">Educação</option>
+                <option value="compras">Compras</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="data">Data</label>
+              <input id="data" name="data" type="date" required />
+            </div>
+          </div>
+
+          <div class="rodape-formulario">
+            <p>Seus registros ficam salvos neste navegador.</p>
+            <button class="botao-principal" type="submit">
+              Adicionar gasto
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="painel painel-transacoes" id="transacoes">
+        <div class="cabecalho-transacoes">
+          <div>
+            <p class="rotulo-secao">SEU HISTÓRICO</p>
+            <h2>Últimos gastos</h2>
+          </div>
+
+          <label class="filtro-categoria" for="filtro">
+            <span class="texto-acessivel">Filtrar por categoria</span>
+            <select id="filtro" name="filtro">
+              <option value="todas">Todas as categorias</option>
+              <option value="alimentacao">Alimentação</option>
+              <option value="moradia">Moradia</option>
+              <option value="transporte">Transporte</option>
+              <option value="lazer">Lazer</option>
+              <option value="saude">Saúde</option>
+              <option value="educacao">Educação</option>
+              <option value="compras">Compras</option>
+              <option value="outros">Outros</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="tabela-container">
+          <table class="tabela-transacoes">
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Data</th>
+                <th class="alinhar-direita">Valor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="lista-gastos">
+            
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="rodape">
+        <span>www.linkedin.com/in/bruno-avila-dev</span>
+        <span>https://github.com/brunno-avila</span>
+      </footer>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
